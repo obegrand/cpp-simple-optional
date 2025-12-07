@@ -1,5 +1,6 @@
 #include <stdexcept>
 #include <utility>
+#include <string>
 
 // Исключение этого типа должно генерироватся при обращении к пустому optional
 class BadOptionalAccess : public std::exception {

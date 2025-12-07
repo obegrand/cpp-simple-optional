@@ -2,6 +2,7 @@
 
 #include <cassert>
 #include <memory>
+#include <iostream>
 
 struct C {
     C() noexcept {
@@ -120,6 +121,7 @@ void TestInitialization() {
         assert(C::InstanceCount() == 3);
     }
     assert(C::InstanceCount() == 0);
+    std::cout<<"TestInitialization"<< " pass!"<<std::endl;
 }
 
 void TestAssignment() {
@@ -148,6 +150,7 @@ void TestAssignment() {
         assert(C::copy_ctor == 0 && C::dtor == 1);
         assert(!o1.HasValue());
     }
+        std::cout<<"TestAssignment"<< " pass!"<<std::endl;
 }
 
 void TestMoveAssignment() {
@@ -180,6 +183,7 @@ void TestMoveAssignment() {
         assert(C::copy_ctor == 0 && C::move_ctor == 0 && C::move_assign == 0 && C::dtor == 1);
         assert(!o1.HasValue());
     }
+            std::cout<<"TestMoveAssignment"<< " pass!"<<std::endl;
 }
 
 void TestValueAccess() {
@@ -204,6 +208,7 @@ void TestValueAccess() {
             assert(false);
         }
     }
+            std::cout<<"TestValueAccess"<< " pass!"<<std::endl;
 }
 
 void TestReset() {
@@ -214,6 +219,7 @@ void TestReset() {
         o.Reset();
         assert(!o.HasValue());
     }
+    std::cout<<"TestReset"<< " pass!"<<std::endl;
 }
 
 void TestEmplace() {
@@ -237,6 +243,7 @@ void TestEmplace() {
     assert(o.HasValue());
     assert(o->i == 3);
     assert(*(o->p) == 4);
+    std::cout<<"TestEmplace"<< " pass!"<<std::endl;
 }
 
 void TestRefQualifiedMethodOverloading() {
@@ -289,6 +296,7 @@ void TestRefQualifiedMethodOverloading() {
         opt.Value().Update();
         assert(C::const_lvalue_call_count == 1);
     }
+    std::cout<<"TestRefQualifiedMethodOverloading"<< " pass!"<<std::endl;
 }
 
 int main() {
